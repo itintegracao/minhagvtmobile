@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+	<h2>Página temporaria apenas para fins de testes.</h2>
+	<select id="qa" style="width: 300px">
+	  <option value="QA2">QA2</option>
+	  <option value="QA3">QA3</option>
+	  <option value="DEV">DEV</option>
+	</select>
+  	<p>
+ 	 <button type="button" id="acessar">Acessar</button>  
+    
+    <script>
+
+        function onWP8NotificationNavigateTo() {
+            document.addEventListener('deviceready', function () {
+                var db = window.sqlitePlugin.openDatabase({ name: "websql" });
+                webSql.get(db, ["local_id", "instance"], function (res) {
+                    console.log('Result ok ' + JSON.stringify(res));
+                    window.location.href = config.HTTP_ENDPOINT + "/notifications?AUTHTOKEN=" + res['local_id'] + '&INSTANCE=' + res['instance'];
+                }, function (error) {
+                    console.log(JSON.stringify(error))
+                });
+            });
+        }
+
+
+		$("#acessar").click(function() {
+			if($("#qa option:selected").val() == "DEV"){
+				localStorage.setItem('qa_protocolo', 'http');
+				localStorage.setItem('qa_ip', '172.31.6.157:8001');
+				localStorage.setItem('qa_http', 'http://172.31.6.157:8001/portal/site/minhagvtmobile');
+				localStorage.setItem('qa_https', 'https://172.31.6.157:8001/portal/site/minhagvtmobile');
+				window.location = 'home.html';
+			}
+
+			if($("#qa option:selected").val() == "QA2"){
+				localStorage.setItem('qa_protocolo', 'http');
+				localStorage.setItem('qa_ip', 'qa2-liveportalgvt.gvt.net.br:8001');
+				localStorage.setItem('qa_http', 'http://172.31.16.42:8001/portal/site/minhagvtmobile');
+				localStorage.setItem('qa_https', 'https://172.31.16.42:8001/portal/site/minhagvtmobile');
+				window.location = 'home.html';
+			}
+			if($("#qa option:selected").val() == "QA3"){
+				localStorage.setItem('qa_protocolo', 'https');
+				localStorage.setItem('qa_ip', 'qa3-portal.gvt.com.br');
+				localStorage.setItem('qa_http', 'https://qa3-portal.gvt.com.br/portal/site/minhagvtmobile');
+				localStorage.setItem('qa_https', 'https://qa3-portal.gvt.com.br/portal/site/minhagvtmobile');
+				window.location = 'home.html';
+			}
+
+		});
+    </script>
+          <script src="js/websql.js"></script>
+          <script src="cordova.js"></script>
+
+    </body>
+</html>
