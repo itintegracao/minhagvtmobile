@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget versionCode="426" id="com.gvt.minhagvt.enterprise" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget versionCode="427" id="com.gvt.minhagvt.enterprise" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Minha GVT</name>
     <description>
         Minha GVT
@@ -14,7 +14,7 @@
     <preference name="DisallowOverscroll" value="true"/>
     <preference name="android-windowSoftInputMode" value="adjustResize" />
     <preference name="permissions" value="none" />
-    <preference name="phonegap-version" value="3.6.3" />
+    <preference name="phonegap-version" value="3.7.0" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="false" />
